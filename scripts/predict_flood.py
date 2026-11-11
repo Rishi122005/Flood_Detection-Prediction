@@ -20,11 +20,27 @@ import numpy as np
 import rasterio
 os.environ.setdefault("TF_NUM_INTRAOP_THREADS", "2")
 os.environ.setdefault("TF_NUM_INTEROP_THREADS", "2")
-import tensorflow as tf
+
+tf = None
+TFLITE_INTERPRETER = None
+if os.environ.get("FLOOD_TFLITE_RUNTIME_ONLY") == "1":
+    try:
+        from ai_edge_litert.interpreter import Interpreter as TFLITE_INTERPRETER
+    except ImportError:
+        try:
+            from tflite_runtime.interpreter import Interpreter as TFLITE_INTERPRETER
+        except ImportError as exc:
+            raise RuntimeError(
+                "FLOOD_TFLITE_RUNTIME_ONLY=1 requires ai-edge-litert or tflite-runtime"
+            ) from exc
+else:
+    import tensorflow as tf
+    TFLITE_INTERPRETER = tf.lite.Interpreter
 
 try:
-    tf.config.threading.set_intra_op_parallelism_threads(int(os.environ["TF_NUM_INTRAOP_THREADS"]))
-    tf.config.threading.set_inter_op_parallelism_threads(int(os.environ["TF_NUM_INTEROP_THREADS"]))
+    if tf is not None:
+        tf.config.threading.set_intra_op_parallelism_threads(int(os.environ["TF_NUM_INTRAOP_THREADS"]))
+        tf.config.threading.set_inter_op_parallelism_threads(int(os.environ["TF_NUM_INTEROP_THREADS"]))
 except RuntimeError:
     # A host application may have initialized TensorFlow before importing this module.
     pass
@@ -35,7 +51,9 @@ LOGGER = logging.getLogger("flood_prediction")
 class TFLitePredictor:
     """Float32 TFLite adapter; preserves the saved Keras model's tensor contract."""
     def __init__(self, model_path: Path, threads: int = 8):
-        self.interpreter = tf.lite.Interpreter(model_path=str(model_path), num_threads=threads)
+        if TFLITE_INTERPRETER is None:
+            raise RuntimeError("No TensorFlow Lite interpreter is available")
+        self.interpreter = TFLITE_INTERPRETER(model_path=str(model_path), num_threads=threads)
         self.interpreter.allocate_tensors()
         input_detail = self.interpreter.get_input_details()[0]
         output_detail = self.interpreter.get_output_details()[0]
@@ -56,6 +74,11 @@ def load_tflite_model(checkpoint: Path, cache_path: Path, threads: int = 8):
     cache_path.parent.mkdir(parents=True, exist_ok=True)
     stage_start = time.perf_counter()
     if not cache_path.is_file():
+        if tf is None:
+            raise FileNotFoundError(
+                f"Preconverted TensorFlow Lite model not found: {cache_path}; "
+                "the TFLite-only deployment cannot convert a Keras checkpoint at runtime"
+            )
         model = load_model(checkpoint)
         LOGGER.info("Converting saved float32 checkpoint to TFLite CPU artifact")
         converter = tf.lite.TFLiteConverter.from_keras_model(model)
@@ -75,6 +98,8 @@ def load_tflite_model(checkpoint: Path, cache_path: Path, threads: int = 8):
 
 
 def load_model(path: Path):
+    if tf is None:
+        raise RuntimeError("Keras checkpoint loading is unavailable in TFLite-only mode")
     if not path.is_file():
         raise FileNotFoundError(f"Model not found: {path}")
     try:
@@ -138,7 +163,7 @@ def predict_array(model, image: np.ndarray, tile: int = 512, overlap: int = 64) 
     if stride <= 0:
         raise ValueError("overlap must be smaller than tile size")
     ys, xs = tile_starts(h, tile, stride), tile_starts(w, tile, stride)
-    direct_predict = isinstance(model, tf.keras.Model)
+    direct_predict = tf is not None and isinstance(model, tf.keras.Model)
     total = np.zeros((h, w), dtype=np.float64)
     weights = np.zeros((h, w), dtype=np.float32)
     for y in ys:

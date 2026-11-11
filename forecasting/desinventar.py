@@ -10,9 +10,11 @@ from __future__ import annotations
 import csv
 import json
 import math
-from collections import Counter, defaultdict
+from collections import Counter
 from datetime import date, datetime
 from pathlib import Path
+import sqlite3
+import tempfile
 from typing import Any
 
 
@@ -30,26 +32,51 @@ OUTPUT_FIELDS = (
 
 
 class HistoricalEventIndex:
-    """Lightweight spatial index over cleaned reported events."""
+    """Disk-backed spatial index over cleaned reports, bounded in memory."""
 
     def __init__(self, path: Path):
         self.path = path
-        self.cells: dict[tuple[int, int], list[dict[str, str]]] = defaultdict(list)
         self.count = 0
-        if not path.is_file():
-            return
-        with path.open(newline="", encoding="utf-8-sig") as stream:
-            for row in csv.DictReader(stream):
-                try:
-                    lat, lon = float(row["latitude"]), float(row["longitude"])
-                except (KeyError, TypeError, ValueError):
-                    continue
-                if not (-90 <= lat <= 90 and -180 <= lon <= 180):
-                    continue
-                row["_latitude"] = lat  # type: ignore[assignment]
-                row["_longitude"] = lon  # type: ignore[assignment]
-                self.cells[(math.floor(lat), math.floor(lon))].append(row)
-                self.count += 1
+        handle = tempfile.NamedTemporaryFile(prefix="flood-events-", suffix=".sqlite", delete=False)
+        self._db_path = Path(handle.name)
+        handle.close()
+        self._db = sqlite3.connect(str(self._db_path), check_same_thread=False)
+        self._db.execute("PRAGMA journal_mode=OFF")
+        self._db.execute("PRAGMA synchronous=OFF")
+        self._db.execute("CREATE TABLE events (lat_cell INTEGER, lon_cell INTEGER, latitude REAL, longitude REAL, payload TEXT)")
+        if path.is_file():
+            with path.open(newline="", encoding="utf-8-sig") as stream:
+                reader = csv.DictReader(stream)
+                batch = []
+                for row in reader:
+                    try:
+                        lat, lon = float(row["latitude"]), float(row["longitude"])
+                    except (KeyError, TypeError, ValueError):
+                        continue
+                    if not (math.isfinite(lat) and math.isfinite(lon) and -90 <= lat <= 90 and -180 <= lon <= 180):
+                        continue
+                    row["_latitude"], row["_longitude"] = lat, lon
+                    batch.append((math.floor(lat), math.floor(lon), lat, lon, json.dumps(row, separators=(",", ":"))))
+                    self.count += 1
+                    if len(batch) >= 2000:
+                        self._db.executemany("INSERT INTO events VALUES (?, ?, ?, ?, ?)", batch)
+                        batch.clear()
+                if batch:
+                    self._db.executemany("INSERT INTO events VALUES (?, ?, ?, ?, ?)", batch)
+        self._db.execute("CREATE INDEX event_cells ON events(lat_cell, lon_cell)")
+        self._db.commit()
+
+    @property
+    def cells(self):
+        """Compatibility view used by callers that inspect the index."""
+        return _EventCellView(self._db)
+
+    def close(self):
+        self._db.close()
+        try:
+            self._db_path.unlink(missing_ok=True)
+        except OSError:
+            pass
 
     @staticmethod
     def _distance_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
@@ -68,15 +95,18 @@ class HistoricalEventIndex:
         lat_span = int(math.ceil(radius_km / 110.5)) + 1
         cos_lat = max(0.01, abs(math.cos(math.radians(latitude))))
         lon_span = min(180, int(math.ceil(radius_km / (110.5 * cos_lat))) + 1)
+        lat_low, lat_high = max(-90, math.floor(latitude) - lat_span), min(90, math.floor(latitude) + lat_span)
+        lon_cells = sorted({((math.floor(longitude) + offset + 180) % 360) - 180
+                            for offset in range(-lon_span, lon_span + 1)})
         candidates = []
-        for lat_cell in range(max(-90, math.floor(latitude) - lat_span),
-                              min(90, math.floor(latitude) + lat_span) + 1):
-            for lon_offset in range(-lon_span, lon_span + 1):
-                lon_cell = ((math.floor(longitude) + lon_offset + 180) % 360) - 180
-                for row in self.cells.get((lat_cell, lon_cell), ()):
-                    distance = self._distance_km(latitude, longitude, row["_latitude"], row["_longitude"])
-                    if distance <= radius_km:
-                        candidates.append((distance, row))
+        for start in range(0, len(lon_cells), 500):
+            chunk = lon_cells[start:start + 500]
+            marks = ",".join("?" for _ in chunk)
+            query = f"SELECT latitude, longitude, payload FROM events WHERE lat_cell BETWEEN ? AND ? AND lon_cell IN ({marks})"
+            for lat, lon, payload in self._db.execute(query, (lat_low, lat_high, *chunk)):
+                distance = self._distance_km(latitude, longitude, lat, lon)
+                if distance <= radius_km:
+                    candidates.append((distance, json.loads(payload)))
         candidates.sort(key=lambda item: item[0])
         public = []
         for distance, row in candidates[:limit]:
@@ -98,6 +128,17 @@ class HistoricalEventIndex:
             "results": public,
             "interpretation": "Historical reported-event records near the query point; representative geocodes may be administrative centroids. Count is not exposure-normalized risk or a future-event probability.",
         }
+
+
+class _EventCellView:
+    """Read-only lazy adapter for the former cells.values() inspection API."""
+    def __init__(self, db):
+        self.db = db
+    def values(self):
+        cells = self.db.execute("SELECT DISTINCT lat_cell, lon_cell FROM events ORDER BY lat_cell, lon_cell")
+        for lat_cell, lon_cell in cells:
+            rows = self.db.execute("SELECT payload FROM events WHERE lat_cell=? AND lon_cell=?", (lat_cell, lon_cell))
+            yield [json.loads(row[0]) for row in rows]
 
 
 def _date_parts(value: str, today: date | None = None) -> tuple[str, str, str, str]:

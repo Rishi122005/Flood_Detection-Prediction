@@ -11,7 +11,15 @@ cd Flood_Detection-Prediction
 git lfs pull
 ```
 
-The required `models/best_unet_flood.keras` checkpoint is included through Git LFS. Duplicate backup snapshots, generated upload results, and the derived TFLite cache are not included; the saved checkpoint can recreate the TFLite cache locally.
+The required `models/best_unet_flood.keras` checkpoint is included through Git LFS. Duplicate backup snapshots, generated upload results, and the local model cache are not included. The deployment-specific, checkpoint-derived float32 model is tracked separately as `models/best_unet_flood.tflite` and documented in its JSON sidecar.
+
+## Free hosted deployment
+
+The deployment configuration is prepared for a Vercel static dashboard and a Northflank Docker backend. **There are no live deployment URLs yet**; they will be recorded here only after both services are authenticated, deployed, and verified end to end. The static frontend receives its public backend URL from the Vercel build-time `API_BASE_URL` setting. Backend CORS is restricted to configured Vercel origins.
+
+The constrained backend image uses the existing float32 TensorFlow Lite conversion of the unchanged Keras U-Net checkpoint through LiteRT. The original `models/best_unet_flood.keras` remains in Git LFS. The deployment downloads only the model conversion, GloFAS archive, saved prediction catalog, before/after assets, and event catalog; it does not package the full training image corpus or raw CWC history. The actual CWC demo uses the checked-in compact cache, which remains explicitly stale.
+
+See [docs/deployment-free.md](docs/deployment-free.md) for the planned free-tier resource budget, required environment variables, persistent upload storage, deployment steps, and limits. Hosting is not complete until the public dashboard, API health route, and a real uploaded Sentinel-1 inference have all been verified.
 
 ## Current verified dashboard status (2026-11-11)
 

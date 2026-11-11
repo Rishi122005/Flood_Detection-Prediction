@@ -1,5 +1,6 @@
 import tempfile
 import unittest
+from email.message import Message
 import csv
 import numpy as np
 from datetime import datetime, timedelta, timezone
@@ -17,6 +18,39 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class GlobalServiceTests(unittest.TestCase):
+    def test_deployment_can_use_verified_compact_cwc_cache_without_raw_csv(self):
+        with tempfile.TemporaryDirectory() as temp:
+            service = FloodService(Path(temp), None, ROOT / "frontend")
+            service.cwc_demo_path = Path(temp) / "cwc-source-not-bundled.csv"
+            service.cwc_demo_cache_path = ROOT / "outputs/forecasting/alipingal_demo_cache.json"
+            try:
+                with patch.dict("os.environ", {"FLOOD_ALLOW_PREBUILT_CWC_CACHE": "1"}):
+                    result = service.experimental_gauge_demo("alipingal-devi")
+                self.assertEqual(result["status"], "historical_demo_estimate")
+                self.assertEqual(result["freshness"], "stale")
+                self.assertIsNone(result["risk_category"])
+            finally:
+                service.close()
+
+    def test_cors_preflight_allows_only_configured_frontend_origin(self):
+        with tempfile.TemporaryDirectory() as temp:
+            service = FloodService(Path(temp), None, ROOT / "frontend")
+            try:
+                handler = make_handler(service).__new__(make_handler(service))
+                handler.headers = Message()
+                handler.headers["Origin"] = "https://flood-demo.vercel.app"
+                handler.send_response = Mock()
+                handler.send_header = Mock()
+                handler.end_headers = Mock()
+                with patch.dict("os.environ", {"CORS_ALLOWED_ORIGINS": "https://flood-demo.vercel.app"}):
+                    handler.do_OPTIONS()
+                handler.send_response.assert_called_once_with(204)
+                headers = {call.args[0]: call.args[1] for call in handler.send_header.call_args_list}
+                self.assertEqual(headers["Access-Control-Allow-Origin"], "https://flood-demo.vercel.app")
+                self.assertEqual(headers["Access-Control-Allow-Methods"], "GET, POST, OPTIONS")
+            finally:
+                service.close()
+
     def test_detection_catalog_rejects_out_of_range_wgs84_georeferencing(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)

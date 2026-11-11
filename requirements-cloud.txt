@@ -1,0 +1,8 @@
+# Lean Linux runtime for the validated float32 TensorFlow Lite conversion.
+# The original Keras checkpoint remains unchanged in Git LFS; this runtime
+# avoids installing the multi-gigabyte TensorFlow training/conversion package.
+numpy==1.26.4
+rasterio==1.4.3
+matplotlib==3.9.2
+Pillow==11.0.0
+ai-edge-litert==2.3.0

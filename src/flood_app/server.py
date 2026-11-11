@@ -8,6 +8,7 @@ import logging
 import math
 import mimetypes
 import hashlib
+import os
 import re
 import sys
 import threading
@@ -103,6 +104,7 @@ def build_detection_catalog(prediction_dir: Path) -> list[dict]:
             probability_path = prediction_dir / f"{scene_id}_probability.tif"
             mask_path = prediction_dir / f"{scene_id}_mask.tif"
             figure_path = prediction_dir / f"{scene_id}_prediction.png"
+            webp_path = prediction_dir / f"{scene_id}_prediction.webp"
             if not probability_path.is_file() or not mask_path.is_file():
                 continue
             with rasterio.open(probability_path) as src:
@@ -138,7 +140,8 @@ def build_detection_catalog(prediction_dir: Path) -> list[dict]:
                 "model_version": f"best_unet_flood.keras sha256:{MODEL_SHA256[:12]}",
                 "source_image_name": Path(summary.get("input", "")).name or None,
                 "probability_file": probability_path.name, "mask_file": mask_path.name,
-                "figure_url": f"/artifacts/{scene_id}.png" if figure_path.is_file() else None,
+                "figure_url": (f"/artifacts/{scene_id}.webp" if webp_path.is_file()
+                               else f"/artifacts/{scene_id}.png" if figure_path.is_file() else None),
             })
         except (OSError, ValueError, rasterio.errors.RasterioError, KeyError) as exc:
             LOGGER.warning("Skip invalid detection summary %s: %s", summary_path, exc)
@@ -183,6 +186,7 @@ class FloodService:
                  event_path: Path | None = None):
         self.prediction_dir = prediction_dir.resolve()
         self.frontend_dir = frontend_dir.resolve()
+        self.upload_output_dir = Path(os.environ.get("FLOOD_UPLOAD_OUTPUT_DIR", ROOT / "outputs")).resolve()
         self.weather_service = OpenMeteoWeatherService()
         self.catalog = build_detection_catalog(self.prediction_dir)
         summary_sources = list(self.prediction_dir.glob("*_summary.json")) if self.prediction_dir.is_dir() else []
@@ -233,7 +237,7 @@ class FloodService:
         digest = hashlib.sha256(content).hexdigest()[:12]
         stem = "upload_" + digest
         run_id = f"upload_inference_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S_%f')}_{digest}"
-        output_dir = ROOT / "outputs" / run_id
+        output_dir = self.upload_output_dir / run_id
         tflite_path = ROOT / "outputs/model_cache" / f"best_unet_flood_{MODEL_SHA256[:12]}.tflite"
         with tempfile.TemporaryDirectory(prefix="flood-upload-") as temp:
             temp_path = Path(temp)
@@ -254,7 +258,8 @@ class FloodService:
                 raise ValueError("Could not read uploaded GeoTIFF") from exc
             with self.model_lock:
                 if self.model is None:
-                    self.model, self.model_load_seconds = load_tflite_model(checkpoint, tflite_path, threads=8)
+                    threads = int(os.environ.get("FLOOD_TFLITE_THREADS", "8"))
+                    self.model, self.model_load_seconds = load_tflite_model(checkpoint, tflite_path, threads=threads)
                 result = run(source, checkpoint, output_dir, .5, 512, 64, model=self.model,
                              model_load_seconds=self.model_load_seconds)
             result = dict(result)
@@ -275,6 +280,7 @@ class FloodService:
     def close(self):
         if self.forecast_dataset is not None:
             self.forecast_dataset.close()
+        self.event_index.close()
 
     def availability(self) -> dict:
         bounds = [scene["bounds"] for scene in self.catalog]
@@ -419,20 +425,27 @@ class FloodService:
             return {"status": "unsupported_location", "station_id": station_id,
                     "risk_category": None, "probability": None,
                     "reason": "Only the Alipingal/Devi CWC telemetry station has a verified published threshold in this demo."}
-        if not self.cwc_demo_path.is_file():
+        source_exists = self.cwc_demo_path.is_file()
+        allow_compact_deploy_cache = os.environ.get("FLOOD_ALLOW_PREBUILT_CWC_CACHE") == "1"
+        if not source_exists and not allow_compact_deploy_cache:
             return {"status": "unavailable", "station_id": station_id,
                     "risk_category": None, "probability": None,
                     "reason": f"CWC telemetry CSV is missing: {self.cwc_demo_path.name}"}
         with self.cwc_demo_lock:
             if self.cwc_demo_record is None and self.cwc_demo_cache_error is None:
                 try:
-                    stat = self.cwc_demo_path.stat()
                     if not self.cwc_demo_cache_path.is_file():
                         raise ValueError("compact CWC cache is missing")
                     cache = json.loads(self.cwc_demo_cache_path.read_text(encoding="utf-8"))
-                    if (cache.get("schema_version") != 1 or cache.get("station_id") != station_id
-                            or cache.get("source_size_bytes") != stat.st_size
-                            or cache.get("source_mtime_ns") != stat.st_mtime_ns):
+                    if cache.get("schema_version") != 1 or cache.get("station_id") != station_id:
+                        raise ValueError("compact CWC cache has an incompatible schema or station")
+                    if source_exists:
+                        stat = self.cwc_demo_path.stat()
+                        source_matches = (cache.get("source_size_bytes") == stat.st_size
+                                          and cache.get("source_mtime_ns") == stat.st_mtime_ns)
+                        if not source_matches:
+                            raise ValueError("compact CWC cache does not match the current source CSV")
+                    elif not allow_compact_deploy_cache:
                         raise ValueError("compact CWC cache does not match the current source CSV")
                     self.cwc_demo_record = cache
                 except (OSError, ValueError, json.JSONDecodeError) as exc:
@@ -558,6 +571,17 @@ def make_handler(service: FloodService):
     class Handler(BaseHTTPRequestHandler):
         server_version = "FloodMonitoring/1.0"
 
+        def _cors_headers(self):
+            origin = self.headers.get("Origin")
+            allowed = {value.strip().rstrip("/") for value in
+                       os.environ.get("CORS_ALLOWED_ORIGINS", "").split(",") if value.strip()}
+            if origin and origin.rstrip("/") in allowed:
+                self.send_header("Access-Control-Allow-Origin", origin)
+                self.send_header("Vary", "Origin")
+                self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+                self.send_header("Access-Control-Allow-Headers", "Content-Type")
+                self.send_header("Access-Control-Max-Age", "600")
+
         def _json(self, payload: dict, status: int = 200):
             encode_started = perf_timer.perf_counter()
             body = json.dumps(payload, allow_nan=False).encode("utf-8")
@@ -569,6 +593,7 @@ def make_handler(service: FloodService):
             self.send_header("Content-Length", str(len(body)))
             self.send_header("Cache-Control", "no-store")
             self.send_header("X-Flood-App-Version", APP_VERSION)
+            self._cors_headers()
             self.end_headers()
             self.wfile.write(body)
 
@@ -584,12 +609,14 @@ def make_handler(service: FloodService):
                 return self._static(service.frontend_dir / "assets" / rel)
             if parsed.path.startswith("/artifacts/"):
                 scene_id = unquote(parsed.path[len("/artifacts/"):])
-                if not SCENE_ID.fullmatch(scene_id) or not scene_id.endswith(".png"):
+                if not SCENE_ID.fullmatch(scene_id) or not scene_id.endswith((".png", ".webp")):
                     return self._json({"error": "invalid artifact name"}, 400)
-                scene_id = scene_id[:-4]
-                if not any(x["scene_id"] == scene_id and x["figure_url"] for x in service.catalog):
+                suffix = ".webp" if scene_id.endswith(".webp") else ".png"
+                scene_id = scene_id[:-len(suffix)]
+                scene = next((x for x in service.catalog if x["scene_id"] == scene_id), None)
+                if not scene or not scene["figure_url"] or not scene["figure_url"].endswith(suffix):
                     return self._json({"error": "artifact not found"}, 404)
-                return self._static(service.prediction_dir / f"{scene_id}_prediction.png")
+                return self._static(service.prediction_dir / f"{scene_id}_prediction{suffix}")
             if parsed.path.startswith("/upload-artifacts/"):
                 name = unquote(parsed.path[len("/upload-artifacts/"):])
                 match = re.fullmatch(
@@ -597,8 +624,8 @@ def make_handler(service: FloodService):
                     name)
                 if not match:
                     return self._json({"error": "invalid artifact name"}, 400)
-                run_dir = (ROOT / "outputs" / match.group(1)).resolve()
-                if run_dir.parent != (ROOT / "outputs").resolve():
+                run_dir = (service.upload_output_dir / match.group(1)).resolve()
+                if run_dir.parent != service.upload_output_dir:
                     return self._json({"error": "invalid artifact path"}, 400)
                 return self._static(run_dir / match.group(2))
             if parsed.path.startswith("/before-after-artifacts/"):
@@ -776,6 +803,16 @@ def make_handler(service: FloodService):
                 LOGGER.exception("Satellite upload processing failed")
                 return self._json({"error": "Satellite processing failed", "detail": str(exc)}, 422)
 
+        def do_OPTIONS(self):
+            origin = self.headers.get("Origin")
+            allowed = {value.strip().rstrip("/") for value in
+                       os.environ.get("CORS_ALLOWED_ORIGINS", "").split(",") if value.strip()}
+            if not origin or origin.rstrip("/") not in allowed:
+                return self._json({"error": "origin is not allowed"}, 403)
+            self.send_response(204)
+            self._cors_headers()
+            self.end_headers()
+
         def _static(self, path: Path):
             try:
                 body = path.read_bytes()
@@ -790,6 +827,7 @@ def make_handler(service: FloodService):
             self.send_header("X-Content-Type-Options", "nosniff")
             self.send_header("Cache-Control", "no-store")
             self.send_header("X-Flood-App-Version", APP_VERSION)
+            self._cors_headers()
             self.end_headers()
             self.wfile.write(body)
 
@@ -802,7 +840,7 @@ def make_handler(service: FloodService):
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--host", default="127.0.0.1")
-    parser.add_argument("--port", type=int, default=8000)
+    parser.add_argument("--port", type=int, default=int(os.environ.get("PORT", "8000")))
     parser.add_argument("--predictions", type=Path, default=Path("outputs/india/predictions"))
     parser.add_argument("--glofas", type=Path, default=Path("data/glofas/data.grib"))
     parser.add_argument("--frontend", type=Path, default=ROOT / "frontend")

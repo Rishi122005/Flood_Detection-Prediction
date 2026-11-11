@@ -1,0 +1,21 @@
+{
+  "artifact": "best_unet_flood.tflite",
+  "artifact_sha256": "4de69a0d87500cd8e50aaE4c3b7fa013d10c4a5fdc39a2525d4f1d3f08993e53",
+  "derived_from_checkpoint": "best_unet_flood.keras",
+  "checkpoint_sha256": "6f20437ef60a01d03c8f2b3ba93bbd04188278ae7906ca99b99618be48922720",
+  "format": "float32 TensorFlow Lite / LiteRT",
+  "input_shape": [1, 512, 512, 2],
+  "input_channels": ["Sentinel-1 VV", "Sentinel-1 VH"],
+  "normalization": {
+    "VV_db": [-30, 0],
+    "VH_db": [-35, -5],
+    "output_range": [0, 1]
+  },
+  "output_shape": [1, 512, 512, 1],
+  "output_semantics": "single-channel sigmoid flood-labelled pixel score; threshold 0.5",
+  "conversion": "Existing float32 TFLite conversion from the unchanged Keras checkpoint; no quantization",
+  "local_equivalence_check": {
+    "probability_max_absolute_difference_from_keras": 0.00000322,
+    "changed_binary_mask_pixels_at_threshold_0_5": 0
+  }
+}

@@ -55,7 +55,7 @@ class PipelineTests(unittest.TestCase):
         np.testing.assert_allclose(result, .62, atol=1e-6)
 
     def test_tflite_adapter_preserves_float32_batch_contract(self):
-        with patch("scripts.predict_flood.tf.lite.Interpreter") as factory:
+        with patch("scripts.predict_flood.TFLITE_INTERPRETER") as factory:
             engine = factory.return_value
             engine.get_input_details.return_value = [{"index": 3, "shape": np.array([1, 512, 512, 2]),
                                                        "dtype": np.float32}]

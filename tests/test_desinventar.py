@@ -4,10 +4,31 @@ import unittest
 from datetime import date
 from pathlib import Path
 
-from forecasting.desinventar import NUMERIC_FIELDS, clean_desinventar
+from forecasting.desinventar import HistoricalEventIndex, NUMERIC_FIELDS, clean_desinventar
 
 
 class DesInventarCleaningTests(unittest.TestCase):
+    def test_historical_index_uses_disk_storage_and_cleans_up(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            path = root / "events.csv"
+            path.write_text(
+                "event_id,latitude,longitude,country,admin1,admin2,event_date,event_year,date_precision,geocode_method\n"
+                "event-1,10,20,Testland,State,District,2001-02-03,2001,day,ADM2_EXACT\n",
+                encoding="utf-8",
+            )
+            index = HistoricalEventIndex(path)
+            database = index._db_path
+            try:
+                self.assertEqual(index.count, 1)
+                self.assertTrue(database.is_file())
+                result = index.nearby(10.01, 20.01)
+                self.assertEqual(result["results"][0]["event_id"], "event-1")
+                self.assertEqual(result["nearby_report_count"], 1)
+            finally:
+                index.close()
+            self.assertFalse(database.exists())
+
     def test_cleaning_deduplicates_exact_rows_and_preserves_unknowns(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
