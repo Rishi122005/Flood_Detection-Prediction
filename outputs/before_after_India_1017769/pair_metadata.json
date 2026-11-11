@@ -1,0 +1,59 @@
+{
+  "anchor": "C:\\Users\\codri\\Downloads\\Flood-Monitoring-and-Prediction-Using-Satellite-Data-main\\data\\S1GRDHand\\India_1017769_S1Hand.tif",
+  "anchor_crs": "EPSG:4326",
+  "anchor_shape": [
+    512,
+    512
+  ],
+  "pair": {
+    "before": {
+      "item_id": "S1A_IW_GRDH_1SDV_20160719T234621_20160719T234650_012224_012FB2_rtc",
+      "acquisition_time": "2016-07-19T23:46:35.531671Z",
+      "relative_orbit": 77,
+      "orbit_state": "descending",
+      "polarizations": [
+        "VH",
+        "VV"
+      ],
+      "valid_coverage_percent": 100.0,
+      "source_raster": {
+        "crs": "EPSG:32646",
+        "resolution": [
+          10.0,
+          10.0
+        ],
+        "shape": [
+          24078,
+          28346
+        ],
+        "nodata": -32768.0
+      },
+      "output": "outputs\\before_after_India_1017769\\before_2016-07-19_VV_VH.tif"
+    },
+    "after": {
+      "item_id": "S1A_IW_GRDH_1SDV_20160812T234622_20160812T234651_012574_013B43_rtc",
+      "acquisition_time": "2016-08-12T23:46:36.825740Z",
+      "relative_orbit": 77,
+      "orbit_state": "descending",
+      "polarizations": [
+        "VH",
+        "VV"
+      ],
+      "valid_coverage_percent": 100.0,
+      "source_raster": {
+        "crs": "EPSG:32646",
+        "resolution": [
+          10.0,
+          10.0
+        ],
+        "shape": [
+          24079,
+          28346
+        ],
+        "nodata": -32768.0
+      },
+      "output": "outputs\\before_after_India_1017769\\after_2016-08-12_VV_VH.tif"
+    }
+  },
+  "classification_caveat": "RTC VV/VH inputs are compatible in polarization and orbit; RTC processing differs from the Sen1Floods11 training product, so these are exploratory model outputs, not validated flood labels."
+}

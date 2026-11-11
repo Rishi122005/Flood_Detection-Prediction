@@ -1,0 +1,6 @@
+# Minimal dependencies for the local prediction and evaluation scripts.
+tensorflow>=2.16
+numpy
+rasterio
+matplotlib
+Pillow  # offline Natural Earth globe texture build

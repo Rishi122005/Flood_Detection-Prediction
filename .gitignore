@@ -1,0 +1,69 @@
+# Python bytecode, caches, build products, and virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.venv/
+venv/
+env/
+ENV/
+build/
+dist/
+downloads/
+*.egg-info/
+
+# IDE and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs, scratch, and temporary files
+*.log
+*.tmp
+*.temp
+*.swp
+*.bak
+*.orig
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*credentials*.json
+*secrets*.json
+
+# Large legacy duplicate snapshots and archives (root project remains complete)
+FloodMonitoring_Backup/
+flood_monitoring_project/
+flood_monitoring_project.zip
+*.zip
+*.tar
+*.gz
+
+# Checkpoints belong in LFS; keep only the required root U-Net checkpoint.
+*.keras
+*.h5
+*.ckpt
+!models/best_unet_flood.keras
+
+# Include original input datasets; large GeoTIFF/GRIB/CWC files are Git LFS tracked.
+# Ignore transient inference outputs and model conversion cache.
+outputs/*
+!outputs/india/
+!outputs/before_after_India_1017769/
+!outputs/flood_events/
+!outputs/forecasting/
+outputs/model_cache/
+outputs/upload_inference_*/
+outputs/fresh_inference_*/
+
+# Jupyter checkpoint state
+.ipynb_checkpoints/

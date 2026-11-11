@@ -1,0 +1,4 @@
+# Optional dependencies for experimental 24-hour model training/inference.
+# Preparing the dataset itself uses Python's standard library only.
+scikit-learn
+joblib

@@ -1,0 +1,42 @@
+{
+  "status": "diagnostic_only",
+  "target": "continuous CWC Alipingal gauge level exactly 24 hours after issue time",
+  "not_a_flood_prediction": true,
+  "threshold_screen": "retained values 0\u201313.11 m (CWC listed historical HFL); excluded readings require source QC and are not treated as labels",
+  "split": {
+    "2021": 151,
+    "2022": 28,
+    "2023": 28
+  },
+  "all_available_examples_by_year": {
+    "2021": 151,
+    "2022": 28,
+    "2023": 28
+  },
+  "model_artifact_saved": false,
+  "ridge_alpha": 1.0,
+  "validation_samples_not_used_for_fit_selection": 28,
+  "test_year": 2023,
+  "test_issue_start": "2023-05-05T00:00:00",
+  "test_issue_end": "2023-09-25T00:00:00",
+  "test_target_range_m": [
+    4.001,
+    4.002
+  ],
+  "persistence": {
+    "mae_m": 0.0001428571428570637,
+    "rmse_m": 0.00037796447300901775
+  },
+  "ridge": {
+    "mae_m": 0.0003664588833940068,
+    "rmse_m": 0.00042288915612533675
+  },
+  "ridge_better_than_persistence": false,
+  "reason": "Diagnostic sample is small and covers only a near-constant low-stage regime; not suitable as a deployed forecast.",
+  "station": "Alipingal",
+  "source_csv": "/mnt/c/Users/codri/Downloads/Flood-Monitoring-and-Prediction-Using-Satellite-Data-main/data/observations/cwc_mahanadi_telemetry_2021_2025.csv",
+  "upper_level_screen_m": 13.11,
+  "timestamp_timezone": "not specified by source; naive wall-clock timestamps retained",
+  "method": "duplicate timestamps median-collapsed; exact hourly lag availability required; one issue per midnight per day; target t+24h; split by calendar year; Ridge standardized using training data only; persistence predicts current level",
+  "flood_threshold_model_trained": false
+}

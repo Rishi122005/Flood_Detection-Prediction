@@ -1,0 +1,11 @@
+{
+  "status": "no_labeled_samples",
+  "horizon_hours": 24,
+  "input_rows": 0,
+  "labeled_rows": 0,
+  "positive_rows": 0,
+  "negative_rows": 0,
+  "unlabeled_or_invalid_rows": 0,
+  "skipped": {},
+  "label_policy": "positive requires documented flood onset in (issue, issue+24h]; negative requires documented continuous coverage of the full window and no onset"
+}

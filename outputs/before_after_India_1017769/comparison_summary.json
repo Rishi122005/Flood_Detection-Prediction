@@ -1,0 +1,38 @@
+{
+  "before_date": "2016-07-19T23:46:35.531671Z",
+  "after_date": "2016-08-12T23:46:36.825740Z",
+  "days_between": 24,
+  "grid_aligned": true,
+  "crs": "EPSG:4326",
+  "shape": [
+    512,
+    512
+  ],
+  "valid_pixels": 262144,
+  "total_valid_area_km2": 23.3439498828125,
+  "before_segmented_pixels": 0,
+  "after_segmented_pixels": 0,
+  "newly_segmented_pixels": 0,
+  "receded_segmented_pixels": 0,
+  "persistent_segmented_pixels": 0,
+  "before_segmented_percent": 0.0,
+  "after_segmented_percent": 0.0,
+  "change_percentage_points": 0.0,
+  "before_segmented_area_km2": 0.0,
+  "after_segmented_area_km2": 0.0,
+  "newly_segmented_area_km2": 0.0,
+  "receded_segmented_area_km2": 0.0,
+  "change_raster": "outputs\\before_after_India_1017769\\change_mask.tif",
+  "artifacts": {
+    "before_input": "outputs\\before_after_India_1017769\\before_2016-07-19_VV_VH.tif",
+    "after_input": "outputs\\before_after_India_1017769\\after_2016-08-12_VV_VH.tif",
+    "before_prediction": "outputs\\before_after_India_1017769\\predictions\\before\\before_2016-07-19_VV_VH_prediction.png",
+    "after_prediction": "outputs\\before_after_India_1017769\\predictions\\after\\after_2016-08-12_VV_VH_prediction.png",
+    "before_mask": "outputs\\before_after_India_1017769\\predictions\\before\\before_2016-07-19_VV_VH_mask.tif",
+    "after_mask": "outputs\\before_after_India_1017769\\predictions\\after\\after_2016-08-12_VV_VH_mask.tif",
+    "before_probability": "outputs\\before_after_India_1017769\\predictions\\before\\before_2016-07-19_VV_VH_probability.tif",
+    "after_probability": "outputs\\before_after_India_1017769\\predictions\\after\\after_2016-08-12_VV_VH_probability.tif"
+  },
+  "interpretation": "Exploratory U-Net change on a same-orbit, co-registered RTC pair; zero detections do not establish absence of flooding. Seasonal water, calibration differences, and model domain shift are not independently resolved.",
+  "comparison_figure": "outputs\\before_after_India_1017769\\before_after_comparison.png"
+}

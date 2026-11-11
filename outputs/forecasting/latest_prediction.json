@@ -1,0 +1,6 @@
+{
+  "status": "unavailable",
+  "forecast": null,
+  "reason": "No trained and independently evaluated future flood-event model is present. Official sources list Alipingal/Devi warning 10.85 m, danger 11.76 m, and historical HFL 13.11 m, but local telemetry has unresolved readings above HFL, a coordinate mismatch, substantial gaps, and unspecified timestamp timezone. The small continuous level pilot is diagnostic only and worse than persistence; it is not a flood prediction.",
+  "required_next_step": "Obtain CWC-confirmed Alipingal station identity, datum, timezone and quality flags/corrections for values above HFL; then collect a longer verified series with multiple threshold events and complete non-event windows for an independent chronological evaluation."
+}

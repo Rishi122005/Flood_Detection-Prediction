@@ -1,0 +1,23 @@
+{
+  "requested_location": {
+    "latitude": 26.009461410282977,
+    "longitude": 92.56240687567549
+  },
+  "source_cell": {
+    "too_far": false,
+    "distance_km": 2.1374964469653954,
+    "row": 1279,
+    "column": 5451,
+    "latitude": 26.025000000000006,
+    "longitude": 92.57499999999996
+  },
+  "source": "ECMWF GRIB hydrological discharge field",
+  "grid_resolution_degrees": [
+    0.049999999999999996,
+    0.049999999999999996
+  ],
+  "records": 60,
+  "location_id": "India_25540_S1Hand",
+  "source_file": "data/glofas/data.grib",
+  "product_scope": "external hydrological forecast records; no flood-event labels or probabilities"
+}

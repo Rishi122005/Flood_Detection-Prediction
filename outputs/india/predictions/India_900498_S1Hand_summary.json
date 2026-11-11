@@ -1,0 +1,14 @@
+{
+  "input": "data/S1GRDHand/India_900498_S1Hand.tif",
+  "model": "models/best_unet_flood.keras",
+  "threshold": 0.5,
+  "height": 512,
+  "width": 512,
+  "valid_pixels": 262144,
+  "predicted_flood_pixels": 117552,
+  "predicted_flood_percent_valid": 44.842529296875,
+  "crs": "EPSG:4326",
+  "total_valid_area_km2": 23.31633108984375,
+  "predicted_flood_area_km2": 10.45514985686493,
+  "area_method": "pixel footprints transformed to equal-area EPSG:6933"
+}

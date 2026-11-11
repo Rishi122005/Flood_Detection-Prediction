@@ -1,0 +1,24 @@
+.weather-risk{margin-bottom:18px}
+.weather-risk-intro{padding:15px 18px 0}
+.weather-risk-controls{display:grid;grid-template-columns:minmax(220px,1fr) auto;gap:12px;align-items:end;padding:15px 18px}
+.weather-location-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.weather-location-fields[hidden]{display:none}
+.weather-risk-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:0 18px 16px}
+.weather-stat,.weather-risk-result{background:#0d1b23;border:1px solid var(--line);border-radius:11px;padding:12px;min-width:0}
+.weather-stat .value{font-size:21px;font-weight:700;margin-top:4px;overflow-wrap:anywhere}
+.weather-risk-result{margin:0 18px 15px;border-left:4px solid var(--cyan)}
+.weather-risk-result[data-level="MODERATE"]{border-left-color:var(--amber)}
+.weather-risk-result[data-level="HIGH"]{border-left-color:var(--red)}
+.weather-risk-result[data-level="INSUFFICIENT"]{border-left-color:#819098}
+.weather-risk-result h3{margin:0 0 6px;font-size:17px}
+.weather-risk-result ul{margin:8px 0 0;padding-left:20px}
+.weather-chart-wrap{padding:14px 18px 18px}
+.weather-chart{height:190px;display:grid;grid-template-columns:repeat(24,minmax(7px,1fr));gap:3px;align-items:end;border-bottom:1px solid var(--line);border-left:1px solid var(--line);padding:8px 5px 0;overflow-x:auto}
+.weather-hour{height:100%;min-width:7px;display:flex;flex-direction:column;justify-content:end;align-items:center;position:relative}
+.weather-hour-bar{width:min(100%,16px);min-height:2px;background:linear-gradient(0deg,#259baf,var(--cyan));border-radius:4px 4px 0 0}
+.weather-hour-label{position:absolute;bottom:-21px;font-size:9px;color:var(--muted);white-space:nowrap}
+.weather-chart-axis{display:flex;justify-content:space-between;margin:24px 0 0 2px}
+.weather-status{padding:0 18px 12px;min-height:22px}
+.weather-source{padding:0 18px 16px}
+.weather-disclaimer{border:1px solid #71592e;background:#302719;color:#f5dfb6;border-radius:10px;padding:11px 13px;margin:12px 18px 16px}
+@media(max-width:800px){.weather-risk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.weather-risk-controls{grid-template-columns:1fr}.weather-chart{grid-template-columns:repeat(24,minmax(12px,1fr))}}

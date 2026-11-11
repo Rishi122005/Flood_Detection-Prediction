@@ -1,0 +1,2170 @@
+{
+  "source_file": "/mnt/c/Users/codri/Downloads/Flood-Monitoring-and-Prediction-Using-Satellite-Data-main/data/observations/cwc_mahanadi_telemetry_2021_2025.csv",
+  "file_size_bytes": 148640758,
+  "record_count": 921203,
+  "station_count": 37,
+  "csv_columns": [
+    "SlNo",
+    "Station",
+    "Agency",
+    "State LGD Code",
+    "State",
+    "District LGD Code",
+    "District",
+    "Tehsil",
+    "Block",
+    "Village",
+    "River",
+    "Basin",
+    "Tributary",
+    "Subtributary",
+    "SubSubtributary",
+    "Local River",
+    "Latitude",
+    "Longitude",
+    "Is_DischargeDataAvailable",
+    "RL_of_zeroGauge",
+    "MeanSeaLevel",
+    "Data Acquisition Time",
+    "River Water Level Telemetry Hourly (meter)"
+  ],
+  "observation_time_start": "2021-01-01T00:00:00",
+  "observation_time_end": "2025-12-30T05:00:00",
+  "inferred_types_from_first_5000_rows": {
+    "SlNo": {
+      "number": 5000
+    },
+    "Station": {
+      "text": 5000
+    },
+    "Agency": {
+      "text": 5000
+    },
+    "State LGD Code": {
+      "number": 5000
+    },
+    "State": {
+      "text": 5000
+    },
+    "District LGD Code": {
+      "number": 5000
+    },
+    "District": {
+      "text": 5000
+    },
+    "Tehsil": {
+      "text": 5000
+    },
+    "Block": {
+      "text": 5000
+    },
+    "Village": {
+      "text": 5000
+    },
+    "River": {
+      "text": 5000
+    },
+    "Basin": {
+      "text": 5000
+    },
+    "Tributary": {
+      "text": 5000
+    },
+    "Subtributary": {
+      "text": 5000
+    },
+    "SubSubtributary": {
+      "text": 5000
+    },
+    "Local River": {
+      "text": 5000
+    },
+    "Latitude": {
+      "number": 5000
+    },
+    "Longitude": {
+      "number": 5000
+    },
+    "Is_DischargeDataAvailable": {
+      "text": 5000
+    },
+    "RL_of_zeroGauge": {
+      "number": 5000
+    },
+    "MeanSeaLevel": {
+      "number": 5000
+    },
+    "Data Acquisition Time": {
+      "datetime": 5000,
+      "text": 0
+    },
+    "River Water Level Telemetry Hourly (meter)": {
+      "number": 5000
+    }
+  },
+  "missing_values_by_column": {
+    "SlNo": 0,
+    "Station": 0,
+    "Agency": 0,
+    "State LGD Code": 0,
+    "State": 0,
+    "District LGD Code": 0,
+    "District": 0,
+    "Tehsil": 0,
+    "Block": 0,
+    "Village": 0,
+    "River": 0,
+    "Basin": 0,
+    "Tributary": 0,
+    "Subtributary": 0,
+    "SubSubtributary": 0,
+    "Local River": 0,
+    "Latitude": 0,
+    "Longitude": 0,
+    "Is_DischargeDataAvailable": 0,
+    "RL_of_zeroGauge": 0,
+    "MeanSeaLevel": 0,
+    "Data Acquisition Time": 0,
+    "River Water Level Telemetry Hourly (meter)": 0
+  },
+  "invalid_timestamp_rows": 0,
+  "invalid_water_level_rows": 37,
+  "invalid_coordinate_rows": 0,
+  "rows_ordered_by_station_and_time": false,
+  "negative_water_level_rows": 3,
+  "duplicate_timestamp_rows": 163,
+  "gap_intervals_over_1h": 53848,
+  "danger_or_warning_level_columns": [],
+  "threshold_status": "no danger/warning threshold column in CSV; station-specific thresholds must be researched separately",
+  "stations": [
+    {
+      "station": "RAJIM",
+      "agency": "CWC",
+      "district": "GARIABAND",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 20.975,
+          "longitude": 81.88055556
+        }
+      ],
+      "rows": 34936,
+      "valid_timestamps": 34936,
+      "invalid_timestamps": 0,
+      "valid_levels": 34936,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 34936,
+      "missing_levels": 0,
+      "level_min_m": 275.0,
+      "level_max_m": 1172.21,
+      "zero_gauge_values": "{275.0}",
+      "mean_sea_level_values": "{275.0}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 897.21,
+      "level_delta_over_10m_count": 52,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-12-23T01:00:00",
+      "valid_coordinate_rows": 34936,
+      "zero_gauge_values_m": [
+        275.0
+      ],
+      "mean_sea_level_values_m": [
+        275.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 4,
+      "gap_intervals_over_1h": 1392,
+      "total_missing_hours_inside_span": 10413,
+      "longest_interval_hours": 2077.0,
+      "expected_hourly_records_in_span": 43610,
+      "interval_cadence_counts": {
+        "1-hour": 30075,
+        "30-minute": 3342,
+        "other sub-hour": 122
+      },
+      "hourly_coverage_pct": 76.122,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "coverage leader only; no verified RAJIM danger threshold, long gaps, and large excursions need CWC clarification",
+      "unique_recorded_hour_buckets": 33197
+    },
+    {
+      "station": "Kurubhata",
+      "agency": "CWC",
+      "district": "RAIGARH",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 21.98111111,
+          "longitude": 83.21055556
+        }
+      ],
+      "rows": 30387,
+      "valid_timestamps": 30387,
+      "invalid_timestamps": 0,
+      "valid_levels": 30387,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 30387,
+      "missing_levels": 0,
+      "level_min_m": 215.0,
+      "level_max_m": 1095.003,
+      "zero_gauge_values": "{213.5}",
+      "mean_sea_level_values": "{215.0}",
+      "level_delta_from_zero_gauge_min_m": 1.5,
+      "level_delta_from_zero_gauge_max_m": 881.5029999999999,
+      "level_delta_over_10m_count": 20,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-06-26T18:00:00",
+      "valid_coordinate_rows": 30387,
+      "zero_gauge_values_m": [
+        213.5
+      ],
+      "mean_sea_level_values_m": [
+        215.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 6,
+      "gap_intervals_over_1h": 1683,
+      "total_missing_hours_inside_span": 10713,
+      "longest_interval_hours": 668.0,
+      "expected_hourly_records_in_span": 39307,
+      "interval_cadence_counts": {
+        "1-hour": 25125,
+        "30-minute": 3464,
+        "other sub-hour": 108
+      },
+      "hourly_coverage_pct": 72.745,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 28594
+    },
+    {
+      "station": "Dharamjaigarh",
+      "agency": "CWC",
+      "district": "RAIGARH",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 22.47722222,
+          "longitude": 83.21416667
+        }
+      ],
+      "rows": 33582,
+      "valid_timestamps": 33582,
+      "invalid_timestamps": 0,
+      "valid_levels": 33582,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 33582,
+      "missing_levels": 0,
+      "level_min_m": 270.0,
+      "level_max_m": 1269.246,
+      "zero_gauge_values": "{270.0}",
+      "mean_sea_level_values": "{300.0}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 999.2460000000001,
+      "level_delta_over_10m_count": 33,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-12-23T01:00:00",
+      "valid_coordinate_rows": 33582,
+      "zero_gauge_values_m": [
+        270.0
+      ],
+      "mean_sea_level_values_m": [
+        300.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 8,
+      "gap_intervals_over_1h": 1237,
+      "total_missing_hours_inside_span": 11896,
+      "longest_interval_hours": 2079.0,
+      "expected_hourly_records_in_span": 43610,
+      "interval_cadence_counts": {
+        "1-hour": 28625,
+        "30-minute": 3557,
+        "other sub-hour": 154
+      },
+      "hourly_coverage_pct": 72.722,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 31714
+    },
+    {
+      "station": "Surajgarh",
+      "agency": "CWC",
+      "district": "RAIGARH",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 21.69361111,
+          "longitude": 83.37722222
+        }
+      ],
+      "rows": 33485,
+      "valid_timestamps": 33485,
+      "invalid_timestamps": 0,
+      "valid_levels": 33485,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 33485,
+      "missing_levels": 0,
+      "level_min_m": 188.0,
+      "level_max_m": 956.0,
+      "zero_gauge_values": "{188.0}",
+      "mean_sea_level_values": "{200.0}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 768.0,
+      "level_delta_over_10m_count": 27,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-12-23T01:00:00",
+      "valid_coordinate_rows": 33485,
+      "zero_gauge_values_m": [
+        188.0
+      ],
+      "mean_sea_level_values_m": [
+        200.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 8,
+      "gap_intervals_over_1h": 1198,
+      "total_missing_hours_inside_span": 11982,
+      "longest_interval_hours": 2081.0,
+      "expected_hourly_records_in_span": 43610,
+      "interval_cadence_counts": {
+        "1-hour": 28590,
+        "30-minute": 3538,
+        "other sub-hour": 150
+      },
+      "hourly_coverage_pct": 72.525,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 31628
+    },
+    {
+      "station": "Kelo at Raigarh",
+      "agency": "CWC",
+      "district": "RAIGARH",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 21.89111111,
+          "longitude": 83.39916667
+        }
+      ],
+      "rows": 29989,
+      "valid_timestamps": 29989,
+      "invalid_timestamps": 0,
+      "valid_levels": 29989,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 29989,
+      "missing_levels": 0,
+      "level_min_m": 223.0,
+      "level_max_m": 1241.229,
+      "zero_gauge_values": "{223.0}",
+      "mean_sea_level_values": "{223.0}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 1018.229,
+      "level_delta_over_10m_count": 608,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-06-13T00:00:00",
+      "valid_coordinate_rows": 29989,
+      "zero_gauge_values_m": [
+        223.0
+      ],
+      "mean_sea_level_values_m": [
+        223.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 7,
+      "gap_intervals_over_1h": 1616,
+      "total_missing_hours_inside_span": 10800,
+      "longest_interval_hours": 779.0,
+      "expected_hourly_records_in_span": 38977,
+      "interval_cadence_counts": {
+        "1-hour": 24765,
+        "30-minute": 3476,
+        "other sub-hour": 124
+      },
+      "hourly_coverage_pct": 72.291,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 28177
+    },
+    {
+      "station": "Jondhra",
+      "agency": "CWC",
+      "district": "BILASPUR",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 21.71694444,
+          "longitude": 82.33833333
+        }
+      ],
+      "rows": 32234,
+      "valid_timestamps": 32234,
+      "invalid_timestamps": 0,
+      "valid_levels": 32234,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 32234,
+      "missing_levels": 0,
+      "level_min_m": 219.0,
+      "level_max_m": 1227.01,
+      "zero_gauge_values": "{219.0}",
+      "mean_sea_level_values": "{219.0}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 1008.01,
+      "level_delta_over_10m_count": 53,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-12-23T01:00:00",
+      "valid_coordinate_rows": 32234,
+      "zero_gauge_values_m": [
+        219.0
+      ],
+      "mean_sea_level_values_m": [
+        219.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 7,
+      "gap_intervals_over_1h": 1253,
+      "total_missing_hours_inside_span": 12679,
+      "longest_interval_hours": 2156.0,
+      "expected_hourly_records_in_span": 43610,
+      "interval_cadence_counts": {
+        "1-hour": 28387,
+        "30-minute": 2428,
+        "other sub-hour": 158
+      },
+      "hourly_coverage_pct": 70.926,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 30931
+    },
+    {
+      "station": "Parmanpur",
+      "agency": "CWC",
+      "district": "JHARSUGUDA",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 21.78944444,
+          "longitude": 84.10611111
+        }
+      ],
+      "rows": 32097,
+      "valid_timestamps": 32097,
+      "invalid_timestamps": 0,
+      "valid_levels": 32097,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 32097,
+      "missing_levels": 0,
+      "level_min_m": 199.0,
+      "level_max_m": 1169.006,
+      "zero_gauge_values": "{199.0}",
+      "mean_sea_level_values": "{210.0}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 970.0060000000001,
+      "level_delta_over_10m_count": 1546,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-12-23T01:00:00",
+      "valid_coordinate_rows": 32097,
+      "zero_gauge_values_m": [
+        199.0
+      ],
+      "mean_sea_level_values_m": [
+        210.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 3,
+      "gap_intervals_over_1h": 1727,
+      "total_missing_hours_inside_span": 13367,
+      "longest_interval_hours": 2370.0,
+      "expected_hourly_records_in_span": 43610,
+      "interval_cadence_counts": {
+        "1-hour": 26676,
+        "30-minute": 3536,
+        "other sub-hour": 154
+      },
+      "hourly_coverage_pct": 69.349,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 30243
+    },
+    {
+      "station": "Andhiyarkhore",
+      "agency": "CWC",
+      "district": "BEMETARA",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 21.83472222,
+          "longitude": 81.59722222
+        }
+      ],
+      "rows": 31948,
+      "valid_timestamps": 31948,
+      "invalid_timestamps": 0,
+      "valid_levels": 31948,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 31948,
+      "missing_levels": 0,
+      "level_min_m": 252.0,
+      "level_max_m": 1222.009,
+      "zero_gauge_values": "{252.0}",
+      "mean_sea_level_values": "{252.0}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 970.009,
+      "level_delta_over_10m_count": 46,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-12-23T01:00:00",
+      "valid_coordinate_rows": 31948,
+      "zero_gauge_values_m": [
+        252.0
+      ],
+      "mean_sea_level_values_m": [
+        252.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 11,
+      "gap_intervals_over_1h": 1258,
+      "total_missing_hours_inside_span": 13492,
+      "longest_interval_hours": 2080.0,
+      "expected_hourly_records_in_span": 43610,
+      "interval_cadence_counts": {
+        "1-hour": 27050,
+        "30-minute": 3458,
+        "other sub-hour": 170
+      },
+      "hourly_coverage_pct": 69.062,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 30118
+    },
+    {
+      "station": "Khairmal",
+      "agency": "CWC",
+      "district": "BAUDH",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 20.82833333,
+          "longitude": 83.98
+        }
+      ],
+      "rows": 30346,
+      "valid_timestamps": 30346,
+      "invalid_timestamps": 0,
+      "valid_levels": 30346,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 30346,
+      "missing_levels": 0,
+      "level_min_m": 97.56,
+      "level_max_m": 1059.804,
+      "zero_gauge_values": "{97.56}",
+      "mean_sea_level_values": "{110.0}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 962.2440000000001,
+      "level_delta_over_10m_count": 24,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-12-23T01:00:00",
+      "valid_coordinate_rows": 30346,
+      "zero_gauge_values_m": [
+        97.56
+      ],
+      "mean_sea_level_values_m": [
+        110.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 6,
+      "gap_intervals_over_1h": 1493,
+      "total_missing_hours_inside_span": 14774,
+      "longest_interval_hours": 2215.0,
+      "expected_hourly_records_in_span": 43610,
+      "interval_cadence_counts": {
+        "1-hour": 25857,
+        "30-minute": 2874,
+        "other sub-hour": 115
+      },
+      "hourly_coverage_pct": 66.122,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 28836
+    },
+    {
+      "station": "Basantpur",
+      "agency": "CWC",
+      "district": "JANJGIR - CHAMPA",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 21.7275,
+          "longitude": 82.78805556
+        }
+      ],
+      "rows": 22290,
+      "valid_timestamps": 22290,
+      "invalid_timestamps": 0,
+      "valid_levels": 22290,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 22290,
+      "missing_levels": 0,
+      "level_min_m": 206.0,
+      "level_max_m": 710.06,
+      "zero_gauge_values": "{206.0}",
+      "mean_sea_level_values": "{206.0}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 504.05999999999995,
+      "level_delta_over_10m_count": 39,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2024-08-13T06:00:00",
+      "valid_coordinate_rows": 22290,
+      "zero_gauge_values_m": [
+        206.0
+      ],
+      "mean_sea_level_values_m": [
+        206.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 8,
+      "gap_intervals_over_1h": 1449,
+      "total_missing_hours_inside_span": 10822,
+      "longest_interval_hours": 3009.0,
+      "expected_hourly_records_in_span": 31687,
+      "interval_cadence_counts": {
+        "1-hour": 18004,
+        "30-minute": 2656,
+        "other sub-hour": 172
+      },
+      "hourly_coverage_pct": 65.847,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 20865
+    },
+    {
+      "station": "Jamadarpali",
+      "agency": "CWC",
+      "district": "SAMBALPUR",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 21.56722222,
+          "longitude": 83.98166667
+        }
+      ],
+      "rows": 30191,
+      "valid_timestamps": 30191,
+      "invalid_timestamps": 0,
+      "valid_levels": 30191,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 30191,
+      "missing_levels": 0,
+      "level_min_m": 177.0,
+      "level_max_m": 1001.086,
+      "zero_gauge_values": "{177.7}",
+      "mean_sea_level_values": "{185.0}",
+      "level_delta_from_zero_gauge_min_m": -0.6999999999999886,
+      "level_delta_from_zero_gauge_max_m": 823.386,
+      "level_delta_over_10m_count": 26,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-12-23T01:00:00",
+      "valid_coordinate_rows": 30191,
+      "zero_gauge_values_m": [
+        177.7
+      ],
+      "mean_sea_level_values_m": [
+        185.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 2,
+      "gap_intervals_over_1h": 2760,
+      "total_missing_hours_inside_span": 14973,
+      "longest_interval_hours": 2076.0,
+      "expected_hourly_records_in_span": 43610,
+      "interval_cadence_counts": {
+        "1-hour": 24336,
+        "30-minute": 2957,
+        "other sub-hour": 135
+      },
+      "hourly_coverage_pct": 65.666,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 28637
+    },
+    {
+      "station": "Kantamal",
+      "agency": "CWC",
+      "district": "BAUDH",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 20.655,
+          "longitude": 83.7275
+        }
+      ],
+      "rows": 29295,
+      "valid_timestamps": 29295,
+      "invalid_timestamps": 0,
+      "valid_levels": 29295,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 29295,
+      "missing_levels": 0,
+      "level_min_m": 118.0,
+      "level_max_m": 1118.01,
+      "zero_gauge_values": "{118.0}",
+      "mean_sea_level_values": "{118.0}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 1000.01,
+      "level_delta_over_10m_count": 51,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-12-22T20:00:00",
+      "valid_coordinate_rows": 29295,
+      "zero_gauge_values_m": [
+        118.0
+      ],
+      "mean_sea_level_values_m": [
+        118.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 1,
+      "gap_intervals_over_1h": 2571,
+      "total_missing_hours_inside_span": 15367,
+      "longest_interval_hours": 2967.0,
+      "expected_hourly_records_in_span": 43605,
+      "interval_cadence_counts": {
+        "1-hour": 24642,
+        "30-minute": 1955,
+        "other sub-hour": 125
+      },
+      "hourly_coverage_pct": 64.759,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 28238
+    },
+    {
+      "station": "Seorinarayan",
+      "agency": "CWC",
+      "district": "JANJGIR - CHAMPA",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 21.71833333,
+          "longitude": 82.5975
+        }
+      ],
+      "rows": 28649,
+      "valid_timestamps": 28649,
+      "invalid_timestamps": 0,
+      "valid_levels": 28649,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 28649,
+      "missing_levels": 0,
+      "level_min_m": 209.5,
+      "level_max_m": 1184.477,
+      "zero_gauge_values": "{209.5}",
+      "mean_sea_level_values": "{209.5}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 974.9770000000001,
+      "level_delta_over_10m_count": 122,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-12-23T01:00:00",
+      "valid_coordinate_rows": 28649,
+      "zero_gauge_values_m": [
+        209.5
+      ],
+      "mean_sea_level_values_m": [
+        209.5
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 3,
+      "gap_intervals_over_1h": 1363,
+      "total_missing_hours_inside_span": 16026,
+      "longest_interval_hours": 2078.0,
+      "expected_hourly_records_in_span": 43610,
+      "interval_cadence_counts": {
+        "1-hour": 25168,
+        "30-minute": 1989,
+        "other sub-hour": 125
+      },
+      "hourly_coverage_pct": 63.252,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 27584
+    },
+    {
+      "station": "Simga",
+      "agency": "CWC",
+      "district": "BALODABAZAR",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 21.63277778,
+          "longitude": 81.68472222
+        }
+      ],
+      "rows": 29311,
+      "valid_timestamps": 29311,
+      "invalid_timestamps": 0,
+      "valid_levels": 29311,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 29311,
+      "missing_levels": 0,
+      "level_min_m": 244.0,
+      "level_max_m": 1181.019,
+      "zero_gauge_values": "{244.0}",
+      "mean_sea_level_values": "{244.0}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 937.019,
+      "level_delta_over_10m_count": 4370,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-12-23T01:00:00",
+      "valid_coordinate_rows": 29311,
+      "zero_gauge_values_m": [
+        244.0
+      ],
+      "mean_sea_level_values_m": [
+        244.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 5,
+      "gap_intervals_over_1h": 1544,
+      "total_missing_hours_inside_span": 16120,
+      "longest_interval_hours": 2108.0,
+      "expected_hourly_records_in_span": 43610,
+      "interval_cadence_counts": {
+        "1-hour": 24140,
+        "30-minute": 3475,
+        "other sub-hour": 146
+      },
+      "hourly_coverage_pct": 63.036,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 27490
+    },
+    {
+      "station": "Thethetanger",
+      "agency": "CWC",
+      "district": "JASHPUR",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 22.64666667,
+          "longitude": 83.93361111
+        }
+      ],
+      "rows": 28317,
+      "valid_timestamps": 28317,
+      "invalid_timestamps": 0,
+      "valid_levels": 28317,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 28317,
+      "missing_levels": 0,
+      "level_min_m": 354.0,
+      "level_max_m": 1122.006,
+      "zero_gauge_values": "{354.0}",
+      "mean_sea_level_values": "{0.0}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 768.0060000000001,
+      "level_delta_over_10m_count": 29,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-12-23T01:00:00",
+      "valid_coordinate_rows": 28317,
+      "zero_gauge_values_m": [
+        354.0
+      ],
+      "mean_sea_level_values_m": [
+        0.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 6,
+      "gap_intervals_over_1h": 1614,
+      "total_missing_hours_inside_span": 16904,
+      "longest_interval_hours": 2081.0,
+      "expected_hourly_records_in_span": 43610,
+      "interval_cadence_counts": {
+        "1-hour": 23497,
+        "30-minute": 3078,
+        "other sub-hour": 121
+      },
+      "hourly_coverage_pct": 61.238,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 26706
+    },
+    {
+      "station": "Kishan Nagar",
+      "agency": "CWC",
+      "district": "CUTTACK",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 20.42666667,
+          "longitude": 86.08916667
+        }
+      ],
+      "rows": 30764,
+      "valid_timestamps": 30764,
+      "invalid_timestamps": 0,
+      "valid_levels": 30732,
+      "invalid_levels": 32,
+      "negative_level_values": 0,
+      "valid_observations": 30732,
+      "missing_levels": 0,
+      "level_min_m": 1.024,
+      "level_max_m": 1010.22,
+      "zero_gauge_values": "{0.0}",
+      "mean_sea_level_values": "{0.0}",
+      "level_delta_from_zero_gauge_min_m": 1.024,
+      "level_delta_from_zero_gauge_max_m": 1010.22,
+      "level_delta_over_10m_count": 30266,
+      "first_observation": "2021-01-01T05:30:00",
+      "last_observation": "2025-12-30T04:30:00",
+      "valid_coordinate_rows": 30764,
+      "zero_gauge_values_m": [
+        0.0
+      ],
+      "mean_sea_level_values_m": [
+        0.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 0,
+      "gap_intervals_over_1h": 1359,
+      "total_missing_hours_inside_span": 17138,
+      "longest_interval_hours": 5553.0,
+      "expected_hourly_records_in_span": 43776,
+      "interval_cadence_counts": {
+        "1-hour": 21240,
+        "30-minute": 8123,
+        "other sub-hour": 9
+      },
+      "hourly_coverage_pct": 60.851,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 26638
+    },
+    {
+      "station": "Korba",
+      "agency": "CWC",
+      "district": "KORBA",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 22.39333333,
+          "longitude": 82.70277778
+        }
+      ],
+      "rows": 27054,
+      "valid_timestamps": 27054,
+      "invalid_timestamps": 0,
+      "valid_levels": 27054,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 27054,
+      "missing_levels": 0,
+      "level_min_m": 272.0,
+      "level_max_m": 1283.17,
+      "zero_gauge_values": "{272.0}",
+      "mean_sea_level_values": "{270.0}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 1011.1700000000001,
+      "level_delta_over_10m_count": 440,
+      "first_observation": "2021-01-05T17:00:00",
+      "last_observation": "2025-12-23T01:00:00",
+      "valid_coordinate_rows": 27054,
+      "zero_gauge_values_m": [
+        272.0
+      ],
+      "mean_sea_level_values_m": [
+        270.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 5,
+      "gap_intervals_over_1h": 2526,
+      "total_missing_hours_inside_span": 17449,
+      "longest_interval_hours": 2100.0,
+      "expected_hourly_records_in_span": 43497,
+      "interval_cadence_counts": {
+        "1-hour": 22531,
+        "30-minute": 1910,
+        "other sub-hour": 81
+      },
+      "hourly_coverage_pct": 59.885,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 26048
+    },
+    {
+      "station": "Deogaon",
+      "agency": "CWC",
+      "district": "SAMBALPUR",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 21.22194444,
+          "longitude": 83.91222222
+        }
+      ],
+      "rows": 24692,
+      "valid_timestamps": 24692,
+      "invalid_timestamps": 0,
+      "valid_levels": 24692,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 24692,
+      "missing_levels": 0,
+      "level_min_m": 114.0,
+      "level_max_m": 1026.01,
+      "zero_gauge_values": "{114.0}",
+      "mean_sea_level_values": "{144.0}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 912.01,
+      "level_delta_over_10m_count": 44,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-05-19T08:00:00",
+      "valid_coordinate_rows": 24692,
+      "zero_gauge_values_m": [
+        114.0
+      ],
+      "mean_sea_level_values_m": [
+        144.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 8,
+      "gap_intervals_over_1h": 2004,
+      "total_missing_hours_inside_span": 15516,
+      "longest_interval_hours": 3095.0,
+      "expected_hourly_records_in_span": 38385,
+      "interval_cadence_counts": {
+        "1-hour": 19055,
+        "30-minute": 3459,
+        "other sub-hour": 165
+      },
+      "hourly_coverage_pct": 59.578,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 22869
+    },
+    {
+      "station": "Ghatora",
+      "agency": "CWC",
+      "district": "BILASPUR",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 22.04861111,
+          "longitude": 82.22166667
+        }
+      ],
+      "rows": 27595,
+      "valid_timestamps": 27595,
+      "invalid_timestamps": 0,
+      "valid_levels": 27595,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 27595,
+      "missing_levels": 0,
+      "level_min_m": 246.0,
+      "level_max_m": 918.009,
+      "zero_gauge_values": "{246.0}",
+      "mean_sea_level_values": "{246.0}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 672.009,
+      "level_delta_over_10m_count": 13,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-12-23T01:00:00",
+      "valid_coordinate_rows": 27595,
+      "zero_gauge_values_m": [
+        246.0
+      ],
+      "mean_sea_level_values_m": [
+        246.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 8,
+      "gap_intervals_over_1h": 1159,
+      "total_missing_hours_inside_span": 17874,
+      "longest_interval_hours": 4554.0,
+      "expected_hourly_records_in_span": 43610,
+      "interval_cadence_counts": {
+        "1-hour": 22734,
+        "30-minute": 3532,
+        "other sub-hour": 161
+      },
+      "hourly_coverage_pct": 59.014,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 25736
+    },
+    {
+      "station": "Baronda",
+      "agency": "CWC",
+      "district": "GARIABAND",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 20.91055556,
+          "longitude": 81.88722222
+        }
+      ],
+      "rows": 8892,
+      "valid_timestamps": 8892,
+      "invalid_timestamps": 0,
+      "valid_levels": 8892,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 8892,
+      "missing_levels": 0,
+      "level_min_m": 284.79,
+      "level_max_m": 1209.59,
+      "zero_gauge_values": "{283.0}",
+      "mean_sea_level_values": "{283.0}",
+      "level_delta_from_zero_gauge_min_m": 1.7900000000000205,
+      "level_delta_from_zero_gauge_max_m": 926.5899999999999,
+      "level_delta_over_10m_count": 8880,
+      "first_observation": "2024-04-04T14:30:00",
+      "last_observation": "2025-12-30T04:30:00",
+      "valid_coordinate_rows": 8892,
+      "zero_gauge_values_m": [
+        283.0
+      ],
+      "mean_sea_level_values_m": [
+        283.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 0,
+      "gap_intervals_over_1h": 642,
+      "total_missing_hours_inside_span": 6339,
+      "longest_interval_hours": 1120.0,
+      "expected_hourly_records_in_span": 15231,
+      "interval_cadence_counts": {
+        "1-hour": 8249
+      },
+      "hourly_coverage_pct": 58.381,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 8892
+    },
+    {
+      "station": "RAVISHANKAR SAGAR DAM",
+      "agency": "CWC",
+      "district": "DHAMTARI",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 20.61,
+          "longitude": 81.56
+        }
+      ],
+      "rows": 26908,
+      "valid_timestamps": 26908,
+      "invalid_timestamps": 0,
+      "valid_levels": 26908,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 26908,
+      "missing_levels": 0,
+      "level_min_m": 4.0,
+      "level_max_m": 1019.0,
+      "zero_gauge_values": "{0.0}",
+      "mean_sea_level_values": "{0.0}",
+      "level_delta_from_zero_gauge_min_m": 4.0,
+      "level_delta_from_zero_gauge_max_m": 1019.0,
+      "level_delta_over_10m_count": 26907,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-12-23T01:00:00",
+      "valid_coordinate_rows": 26908,
+      "zero_gauge_values_m": [
+        0.0
+      ],
+      "mean_sea_level_values_m": [
+        0.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 6,
+      "gap_intervals_over_1h": 1388,
+      "total_missing_hours_inside_span": 18449,
+      "longest_interval_hours": 6965.0,
+      "expected_hourly_records_in_span": 43610,
+      "interval_cadence_counts": {
+        "1-hour": 22039,
+        "30-minute": 3342,
+        "other sub-hour": 132
+      },
+      "hourly_coverage_pct": 57.695,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 25161
+    },
+    {
+      "station": "Lower Indra Project",
+      "agency": "CWC",
+      "district": "BALANGIR",
+      "river": "-",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 20.4139,
+          "longitude": 82.8653
+        }
+      ],
+      "rows": 24481,
+      "valid_timestamps": 24481,
+      "invalid_timestamps": 0,
+      "valid_levels": 24481,
+      "invalid_levels": 0,
+      "negative_level_values": 2,
+      "valid_observations": 24481,
+      "missing_levels": 0,
+      "level_min_m": -246.42,
+      "level_max_m": 266.7,
+      "zero_gauge_values": "{0.0}",
+      "mean_sea_level_values": "{0.0}",
+      "level_delta_from_zero_gauge_min_m": -246.42,
+      "level_delta_from_zero_gauge_max_m": 266.7,
+      "level_delta_over_10m_count": 24481,
+      "first_observation": "2021-03-03T11:30:00",
+      "last_observation": "2025-12-30T05:00:00",
+      "valid_coordinate_rows": 24481,
+      "zero_gauge_values_m": [
+        0.0
+      ],
+      "mean_sea_level_values_m": [
+        0.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 0,
+      "gap_intervals_over_1h": 1299,
+      "total_missing_hours_inside_span": 17908,
+      "longest_interval_hours": 5954.0,
+      "expected_hourly_records_in_span": 42307,
+      "interval_cadence_counts": {
+        "1-hour": 23017,
+        "30-minute": 157,
+        "other sub-hour": 7
+      },
+      "hourly_coverage_pct": 57.671,
+      "water_level_negative_values": 2,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 24399
+    },
+    {
+      "station": "Tikarpara",
+      "agency": "CWC",
+      "district": "ANUGUL",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 20.59888889,
+          "longitude": 84.78138889
+        }
+      ],
+      "rows": 22974,
+      "valid_timestamps": 22974,
+      "invalid_timestamps": 0,
+      "valid_levels": 22974,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 22974,
+      "missing_levels": 0,
+      "level_min_m": 50.0,
+      "level_max_m": 1027.019,
+      "zero_gauge_values": "{50.0}",
+      "mean_sea_level_values": "{0.0}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 977.019,
+      "level_delta_over_10m_count": 272,
+      "first_observation": "2021-01-03T03:00:00",
+      "last_observation": "2025-04-06T17:00:00",
+      "valid_coordinate_rows": 22974,
+      "zero_gauge_values_m": [
+        50.0
+      ],
+      "mean_sea_level_values_m": [
+        0.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 6,
+      "gap_intervals_over_1h": 2182,
+      "total_missing_hours_inside_span": 15794,
+      "longest_interval_hours": 717.0,
+      "expected_hourly_records_in_span": 37311,
+      "interval_cadence_counts": {
+        "1-hour": 17896,
+        "30-minute": 2734,
+        "other sub-hour": 155
+      },
+      "hourly_coverage_pct": 57.669,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 21517
+    },
+    {
+      "station": "Bamnidhi",
+      "agency": "CWC",
+      "district": "JANJGIR - CHAMPA",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 21.9,
+          "longitude": 82.71333333
+        }
+      ],
+      "rows": 26508,
+      "valid_timestamps": 26508,
+      "invalid_timestamps": 0,
+      "valid_levels": 26508,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 26508,
+      "missing_levels": 0,
+      "level_min_m": 223.0,
+      "level_max_m": 1087.017,
+      "zero_gauge_values": "{223.0}",
+      "mean_sea_level_values": "{0.0}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 864.017,
+      "level_delta_over_10m_count": 33,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-12-23T01:00:00",
+      "valid_coordinate_rows": 26508,
+      "zero_gauge_values_m": [
+        223.0
+      ],
+      "mean_sea_level_values_m": [
+        0.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 2,
+      "gap_intervals_over_1h": 1458,
+      "total_missing_hours_inside_span": 18631,
+      "longest_interval_hours": 8528.0,
+      "expected_hourly_records_in_span": 43610,
+      "interval_cadence_counts": {
+        "1-hour": 22001,
+        "30-minute": 2992,
+        "other sub-hour": 54
+      },
+      "hourly_coverage_pct": 57.278,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 24979
+    },
+    {
+      "station": "Sankara",
+      "agency": "CWC",
+      "district": "MAHASAMUND",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 21.28888889,
+          "longitude": 82.65138889
+        }
+      ],
+      "rows": 26694,
+      "valid_timestamps": 26694,
+      "invalid_timestamps": 0,
+      "valid_levels": 26694,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 26694,
+      "missing_levels": 0,
+      "level_min_m": 262.0,
+      "level_max_m": 1228.939,
+      "zero_gauge_values": "{259.0}",
+      "mean_sea_level_values": "{259.0}",
+      "level_delta_from_zero_gauge_min_m": 3.0,
+      "level_delta_from_zero_gauge_max_m": 969.9390000000001,
+      "level_delta_over_10m_count": 22,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-12-23T01:00:00",
+      "valid_coordinate_rows": 26694,
+      "zero_gauge_values_m": [
+        259.0
+      ],
+      "mean_sea_level_values_m": [
+        259.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 9,
+      "gap_intervals_over_1h": 1924,
+      "total_missing_hours_inside_span": 18641,
+      "longest_interval_hours": 3406.0,
+      "expected_hourly_records_in_span": 43610,
+      "interval_cadence_counts": {
+        "1-hour": 21333,
+        "30-minute": 3304,
+        "other sub-hour": 123
+      },
+      "hourly_coverage_pct": 57.255,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 24969
+    },
+    {
+      "station": "Kesinga",
+      "agency": "CWC",
+      "district": "KALAHANDI",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 20.19861111,
+          "longitude": 83.21944444
+        }
+      ],
+      "rows": 25354,
+      "valid_timestamps": 25354,
+      "invalid_timestamps": 0,
+      "valid_levels": 25354,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 25354,
+      "missing_levels": 0,
+      "level_min_m": 166.0,
+      "level_max_m": 1128.873,
+      "zero_gauge_values": "{166.0}",
+      "mean_sea_level_values": "{166.0}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 962.873,
+      "level_delta_over_10m_count": 31,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-09-13T12:00:00",
+      "valid_coordinate_rows": 25354,
+      "zero_gauge_values_m": [
+        166.0
+      ],
+      "mean_sea_level_values_m": [
+        166.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 1,
+      "gap_intervals_over_1h": 844,
+      "total_missing_hours_inside_span": 17633,
+      "longest_interval_hours": 4166.0,
+      "expected_hourly_records_in_span": 41197,
+      "interval_cadence_counts": {
+        "1-hour": 20937,
+        "30-minute": 3524,
+        "other sub-hour": 47
+      },
+      "hourly_coverage_pct": 57.198,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 23564
+    },
+    {
+      "station": "Salebhata",
+      "agency": "CWC",
+      "district": "BALANGIR",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 20.98305556,
+          "longitude": 83.53694444
+        }
+      ],
+      "rows": 26700,
+      "valid_timestamps": 26700,
+      "invalid_timestamps": 0,
+      "valid_levels": 26700,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 26700,
+      "missing_levels": 0,
+      "level_min_m": 130.0,
+      "level_max_m": 1015.456,
+      "zero_gauge_values": "{127.0}",
+      "mean_sea_level_values": "{140.0}",
+      "level_delta_from_zero_gauge_min_m": 3.0,
+      "level_delta_from_zero_gauge_max_m": 888.456,
+      "level_delta_over_10m_count": 15,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-12-23T01:00:00",
+      "valid_coordinate_rows": 26700,
+      "zero_gauge_values_m": [
+        127.0
+      ],
+      "mean_sea_level_values_m": [
+        140.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 6,
+      "gap_intervals_over_1h": 1522,
+      "total_missing_hours_inside_span": 18676,
+      "longest_interval_hours": 9360.0,
+      "expected_hourly_records_in_span": 43610,
+      "interval_cadence_counts": {
+        "1-hour": 21670,
+        "30-minute": 3332,
+        "other sub-hour": 169
+      },
+      "hourly_coverage_pct": 57.175,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 24934
+    },
+    {
+      "station": "Rampur",
+      "agency": "CWC",
+      "district": "BALODABAZAR",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 21.64722222,
+          "longitude": 82.51611111
+        }
+      ],
+      "rows": 8671,
+      "valid_timestamps": 8671,
+      "invalid_timestamps": 0,
+      "valid_levels": 8671,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 8671,
+      "missing_levels": 0,
+      "level_min_m": 220.27,
+      "level_max_m": 1336.68,
+      "zero_gauge_values": "{217.0}",
+      "mean_sea_level_values": "{217.0}",
+      "level_delta_from_zero_gauge_min_m": 3.2700000000000102,
+      "level_delta_from_zero_gauge_max_m": 1119.68,
+      "level_delta_over_10m_count": 8595,
+      "first_observation": "2024-04-04T05:30:00",
+      "last_observation": "2025-12-30T04:30:00",
+      "valid_coordinate_rows": 8671,
+      "zero_gauge_values_m": [
+        217.0
+      ],
+      "mean_sea_level_values_m": [
+        217.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 0,
+      "gap_intervals_over_1h": 621,
+      "total_missing_hours_inside_span": 6569,
+      "longest_interval_hours": 1120.0,
+      "expected_hourly_records_in_span": 15240,
+      "interval_cadence_counts": {
+        "1-hour": 8048,
+        "30-minute": 1
+      },
+      "hourly_coverage_pct": 56.896,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 8671
+    },
+    {
+      "station": "Pubansa (S)",
+      "agency": "CWC",
+      "district": "CUTTACK",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 20.46277778,
+          "longitude": 86.24916667
+        }
+      ],
+      "rows": 28108,
+      "valid_timestamps": 28108,
+      "invalid_timestamps": 0,
+      "valid_levels": 28103,
+      "invalid_levels": 5,
+      "negative_level_values": 0,
+      "valid_observations": 28103,
+      "missing_levels": 0,
+      "level_min_m": 0.004,
+      "level_max_m": 1003.015,
+      "zero_gauge_values": "{0.0}",
+      "mean_sea_level_values": "{0.0}",
+      "level_delta_from_zero_gauge_min_m": 0.004,
+      "level_delta_from_zero_gauge_max_m": 1003.015,
+      "level_delta_over_10m_count": 10107,
+      "first_observation": "2021-01-01T05:30:00",
+      "last_observation": "2025-12-17T04:30:00",
+      "valid_coordinate_rows": 28108,
+      "zero_gauge_values_m": [
+        0.0
+      ],
+      "mean_sea_level_values_m": [
+        0.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 0,
+      "gap_intervals_over_1h": 1512,
+      "total_missing_hours_inside_span": 19420,
+      "longest_interval_hours": 5549.0,
+      "expected_hourly_records_in_span": 43464,
+      "interval_cadence_counts": {
+        "1-hour": 18511,
+        "30-minute": 8067,
+        "other sub-hour": 12
+      },
+      "hourly_coverage_pct": 55.319,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 24044
+    },
+    {
+      "station": "Manendragarh",
+      "agency": "CWC",
+      "district": "KORIYA",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 23.20138889,
+          "longitude": 82.21444444
+        }
+      ],
+      "rows": 23525,
+      "valid_timestamps": 23525,
+      "invalid_timestamps": 0,
+      "valid_levels": 23525,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 23525,
+      "missing_levels": 0,
+      "level_min_m": 411.14,
+      "level_max_m": 1403.528,
+      "zero_gauge_values": "{409.5}",
+      "mean_sea_level_values": "{411.0}",
+      "level_delta_from_zero_gauge_min_m": 1.6399999999999864,
+      "level_delta_from_zero_gauge_max_m": 994.028,
+      "level_delta_over_10m_count": 18,
+      "first_observation": "2021-01-01T13:00:00",
+      "last_observation": "2025-12-22T18:00:00",
+      "valid_coordinate_rows": 23525,
+      "zero_gauge_values_m": [
+        409.5
+      ],
+      "mean_sea_level_values_m": [
+        411.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 5,
+      "gap_intervals_over_1h": 2040,
+      "total_missing_hours_inside_span": 20218,
+      "longest_interval_hours": 2081.0,
+      "expected_hourly_records_in_span": 43590,
+      "interval_cadence_counts": {
+        "1-hour": 21197,
+        "30-minute": 160,
+        "other sub-hour": 122
+      },
+      "hourly_coverage_pct": 53.618,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 23372
+    },
+    {
+      "station": "Hirakud Reservoir",
+      "agency": "CWC",
+      "district": "SAMBALPUR",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 21.52,
+          "longitude": 83.85
+        }
+      ],
+      "rows": 23354,
+      "valid_timestamps": 23354,
+      "invalid_timestamps": 0,
+      "valid_levels": 23354,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 23354,
+      "missing_levels": 0,
+      "level_min_m": 161.77,
+      "level_max_m": 1064.946,
+      "zero_gauge_values": "{0.0}",
+      "mean_sea_level_values": "{174.0}",
+      "level_delta_from_zero_gauge_min_m": 161.77,
+      "level_delta_from_zero_gauge_max_m": 1064.946,
+      "level_delta_over_10m_count": 23354,
+      "first_observation": "2021-01-07T09:00:00",
+      "last_observation": "2025-12-23T00:00:00",
+      "valid_coordinate_rows": 23354,
+      "zero_gauge_values_m": [
+        0.0
+      ],
+      "mean_sea_level_values_m": [
+        174.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 5,
+      "gap_intervals_over_1h": 1521,
+      "total_missing_hours_inside_span": 20876,
+      "longest_interval_hours": 8126.0,
+      "expected_hourly_records_in_span": 43456,
+      "interval_cadence_counts": {
+        "1-hour": 20292,
+        "30-minute": 1425,
+        "other sub-hour": 110
+      },
+      "hourly_coverage_pct": 51.961,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 22580
+    },
+    {
+      "station": "Sundergarh",
+      "agency": "CWC",
+      "district": "SUNDARGARH",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 22.11527778,
+          "longitude": 83.39916667
+        }
+      ],
+      "rows": 24377,
+      "valid_timestamps": 24377,
+      "invalid_timestamps": 0,
+      "valid_levels": 24377,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 24377,
+      "missing_levels": 0,
+      "level_min_m": 214.0,
+      "level_max_m": 1115.939,
+      "zero_gauge_values": "{214.0}",
+      "mean_sea_level_values": "{0.0}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 901.9390000000001,
+      "level_delta_over_10m_count": 21,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2025-12-23T01:00:00",
+      "valid_coordinate_rows": 24377,
+      "zero_gauge_values_m": [
+        214.0
+      ],
+      "mean_sea_level_values_m": [
+        0.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 7,
+      "gap_intervals_over_1h": 2009,
+      "total_missing_hours_inside_span": 21034,
+      "longest_interval_hours": 2080.0,
+      "expected_hourly_records_in_span": 43610,
+      "interval_cadence_counts": {
+        "1-hour": 18779,
+        "other sub-hour": 125,
+        "30-minute": 3456
+      },
+      "hourly_coverage_pct": 51.768,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 22576
+    },
+    {
+      "station": "Alipingal",
+      "agency": "CWC",
+      "district": "JAGATSINGHAPUR",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 20.22083333,
+          "longitude": 86.14666667
+        }
+      ],
+      "rows": 13260,
+      "valid_timestamps": 13260,
+      "invalid_timestamps": 0,
+      "valid_levels": 13260,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 13260,
+      "missing_levels": 0,
+      "level_min_m": 0.001,
+      "level_max_m": 891.185,
+      "zero_gauge_values": "{0.0}",
+      "mean_sea_level_values": "{15.0}",
+      "level_delta_from_zero_gauge_min_m": 0.001,
+      "level_delta_from_zero_gauge_max_m": 891.185,
+      "level_delta_over_10m_count": 17,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2024-05-09T04:00:00",
+      "valid_coordinate_rows": 13260,
+      "zero_gauge_values_m": [
+        0.0
+      ],
+      "mean_sea_level_values_m": [
+        15.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 4,
+      "gap_intervals_over_1h": 1476,
+      "total_missing_hours_inside_span": 17346,
+      "longest_interval_hours": 4313.0,
+      "expected_hourly_records_in_span": 29381,
+      "interval_cadence_counts": {
+        "1-hour": 9368,
+        "30-minute": 2321,
+        "other sub-hour": 90
+      },
+      "hourly_coverage_pct": 40.962,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "threshold-oriented candidate; official levels verified, but extreme telemetry readings, coordinate mismatch, gaps, and datum/timezone need CWC clarification",
+      "unique_recorded_hour_buckets": 12035
+    },
+    {
+      "station": "Pilasalki Dam",
+      "agency": "CWC",
+      "district": "KANDHAMAL",
+      "river": "-",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 20.4239,
+          "longitude": 84.3381
+        }
+      ],
+      "rows": 16853,
+      "valid_timestamps": 16853,
+      "invalid_timestamps": 0,
+      "valid_levels": 16853,
+      "invalid_levels": 0,
+      "negative_level_values": 1,
+      "valid_observations": 16853,
+      "missing_levels": 0,
+      "level_min_m": -75.11,
+      "level_max_m": 548.89,
+      "zero_gauge_values": "{0.0}",
+      "mean_sea_level_values": "{0.0}",
+      "level_delta_from_zero_gauge_min_m": -75.11,
+      "level_delta_from_zero_gauge_max_m": 548.89,
+      "level_delta_over_10m_count": 16852,
+      "first_observation": "2021-03-16T12:30:00",
+      "last_observation": "2025-12-30T04:00:00",
+      "valid_coordinate_rows": 16853,
+      "zero_gauge_values_m": [
+        0.0
+      ],
+      "mean_sea_level_values_m": [
+        0.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 0,
+      "gap_intervals_over_1h": 449,
+      "total_missing_hours_inside_span": 25228,
+      "longest_interval_hours": 9694.0,
+      "expected_hourly_records_in_span": 41993,
+      "interval_cadence_counts": {
+        "1-hour": 16226,
+        "30-minute": 175,
+        "other sub-hour": 2
+      },
+      "hourly_coverage_pct": 39.923,
+      "water_level_negative_values": 1,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 16765
+    },
+    {
+      "station": "Nimapara",
+      "agency": "CWC",
+      "district": "PURI",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 20.06083333,
+          "longitude": 86.00638889
+        }
+      ],
+      "rows": 17545,
+      "valid_timestamps": 17545,
+      "invalid_timestamps": 0,
+      "valid_levels": 17545,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 17545,
+      "missing_levels": 0,
+      "level_min_m": 3.22,
+      "level_max_m": 889.22,
+      "zero_gauge_values": "{0.0}",
+      "mean_sea_level_values": "{8.0}",
+      "level_delta_from_zero_gauge_min_m": 3.22,
+      "level_delta_from_zero_gauge_max_m": 889.22,
+      "level_delta_over_10m_count": 56,
+      "first_observation": "2021-01-08T06:00:00",
+      "last_observation": "2025-12-22T04:00:00",
+      "valid_coordinate_rows": 17545,
+      "zero_gauge_values_m": [
+        0.0
+      ],
+      "mean_sea_level_values_m": [
+        8.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 3,
+      "gap_intervals_over_1h": 1525,
+      "total_missing_hours_inside_span": 26210,
+      "longest_interval_hours": 5326.0,
+      "expected_hourly_records_in_span": 43415,
+      "interval_cadence_counts": {
+        "other sub-hour": 118,
+        "1-hour": 15348,
+        "30-minute": 550
+      },
+      "hourly_coverage_pct": 39.629,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 17205
+    },
+    {
+      "station": "Padmavati",
+      "agency": "CWC",
+      "district": "NAYAGARH",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 20.34388889,
+          "longitude": 85.29611111
+        }
+      ],
+      "rows": 9818,
+      "valid_timestamps": 9818,
+      "invalid_timestamps": 0,
+      "valid_levels": 9818,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 9818,
+      "missing_levels": 0,
+      "level_min_m": 30.0,
+      "level_max_m": 646.0,
+      "zero_gauge_values": "{30.0}",
+      "mean_sea_level_values": "{0.0}",
+      "level_delta_from_zero_gauge_min_m": 0.0,
+      "level_delta_from_zero_gauge_max_m": 616.0,
+      "level_delta_over_10m_count": 2,
+      "first_observation": "2021-01-01T00:00:00",
+      "last_observation": "2023-08-19T19:00:00",
+      "valid_coordinate_rows": 9818,
+      "zero_gauge_values_m": [
+        30.0
+      ],
+      "mean_sea_level_values_m": [
+        0.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 3,
+      "gap_intervals_over_1h": 212,
+      "total_missing_hours_inside_span": 14952,
+      "longest_interval_hours": 7272.0,
+      "expected_hourly_records_in_span": 23060,
+      "interval_cadence_counts": {
+        "1-hour": 6188,
+        "30-minute": 3313,
+        "other sub-hour": 101
+      },
+      "hourly_coverage_pct": 35.16,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 8108
+    },
+    {
+      "station": "Khandapara",
+      "agency": "CWC",
+      "district": "NAYAGARH",
+      "river": "Mahanadi",
+      "basins": [
+        "Mahanadi"
+      ],
+      "coordinates": [
+        {
+          "latitude": 20.2575,
+          "longitude": 85.18611111
+        }
+      ],
+      "rows": 19,
+      "valid_timestamps": 19,
+      "invalid_timestamps": 0,
+      "valid_levels": 19,
+      "invalid_levels": 0,
+      "negative_level_values": 0,
+      "valid_observations": 19,
+      "missing_levels": 0,
+      "level_min_m": 0.001,
+      "level_max_m": 768.0,
+      "zero_gauge_values": "{45.0}",
+      "mean_sea_level_values": "{0.0}",
+      "level_delta_from_zero_gauge_min_m": -44.999,
+      "level_delta_from_zero_gauge_max_m": 723.0,
+      "level_delta_over_10m_count": 18,
+      "first_observation": "2021-10-02T08:30:00",
+      "last_observation": "2022-07-28T03:00:00",
+      "valid_coordinate_rows": 19,
+      "zero_gauge_values_m": [
+        45.0
+      ],
+      "mean_sea_level_values_m": [
+        0.0
+      ],
+      "coordinate_consistent": true,
+      "duplicate_timestamps": 0,
+      "gap_intervals_over_1h": 18,
+      "total_missing_hours_inside_span": 7153,
+      "longest_interval_hours": 3003.0,
+      "expected_hourly_records_in_span": 7172,
+      "interval_cadence_counts": {},
+      "hourly_coverage_pct": 0.265,
+      "water_level_negative_values": 0,
+      "danger_level_in_source": false,
+      "station_selection": "not selected: station-specific threshold and data quality need review",
+      "unique_recorded_hour_buckets": 19
+    }
+  ],
+  "timestamp_timezone": "not specified in source; timestamps are naive recorded wall-clock values"
+}

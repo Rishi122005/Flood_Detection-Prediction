@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "station_id": "alipingal-devi",
+  "station_name": "Alipingal / Alipingala, Devi River, Jagatsinghpur, Odisha",
+  "source_file": "/mnt/c/Users/codri/Downloads/Flood-Monitoring-and-Prediction-Using-Satellite-Data-main/data/observations/cwc_mahanadi_telemetry_2021_2025.csv",
+  "source_size_bytes": 148640758,
+  "source_mtime_ns": 1792976896610645900,
+  "timestamp_timezone": "not specified by source; recorded wall-clock time",
+  "screen": {
+    "minimum_m": 0,
+    "maximum_m": 13.11,
+    "meaning": "demonstration-only screen based on published historical HFL; above-range readings require CWC QC"
+  },
+  "latest_observation": {
+    "observed_at": "2024-05-09T04:00:00",
+    "level_m": 4.001
+  },
+  "observation_24h_prior": null,
+  "series_observation_count_after_screen": 13241
+}

@@ -1,0 +1,14 @@
+{
+  "input": "/mnt/c/Users/codri/Downloads/Flood-Monitoring-and-Prediction-Using-Satellite-Data-main/data/S1GRDHand/India_103447_S1Hand.tif",
+  "model": "models/best_unet_flood.keras",
+  "threshold": 0.5,
+  "height": 512,
+  "width": 512,
+  "valid_pixels": 262144,
+  "predicted_flood_pixels": 34087,
+  "predicted_flood_percent_valid": 13.003158569335938,
+  "crs": "EPSG:4326",
+  "total_valid_area_km2": 23.29783908984375,
+  "predicted_flood_area_km2": 3.0296064627838133,
+  "area_method": "pixel footprints transformed to equal-area EPSG:6933"
+}

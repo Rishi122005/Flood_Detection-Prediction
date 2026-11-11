@@ -1,0 +1,15 @@
+{
+  "status": "not_trained",
+  "target": null,
+  "probability": null,
+  "decision": "historical descriptive event-report lookup and 1-degree record counts only",
+  "reason": "The source is presence-only reported disasters without continuous observed non-event coverage or exposure denominators. Available impact fields are post-event outcomes and are not valid predictors of future occurrence.",
+  "source_dataset": "/mnt/c/Users/codri/Downloads/Flood-Monitoring-and-Prediction-Using-Satellite-Data-main/data/floodevents/DesInventar_Geocoded.csv",
+  "usable_event_records": 122693,
+  "required_for_future_occurrence_model": [
+    "Timestamped predictors available before each forecast issue time",
+    "Observed flood onset labels matched to the prediction location and horizon",
+    "Documented non-event surveillance covering complete target windows",
+    "Exposure/geographic support and independent chronological spatial or event-grouped evaluation"
+  ]
+}

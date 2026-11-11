@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+title: "Flood Monitoring and Prediction Using Satellite Data, Remote Sensing and Machine Learning Techniques"
+message: "If you use this project in your research, please cite it."
+authors:
+  - family-names: "Gurugubelli"
+    given-names: "Sathwik"
+date-released: 2026-01-01
+license: MIT
